@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCursoTable extends Migration
+class CreateMesesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCursoTable extends Migration
      */
     public function up()
     {
-        Schema::create('curso', function (Blueprint $table) {
+        Schema::create('meses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre', 50)->unique();
+            $table->string('nombre')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateCursoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('curso');
+        Schema::dropIfExists('meses');
     }
 }

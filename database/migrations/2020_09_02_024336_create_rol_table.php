@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarreraTable extends Migration
+class CreateRolTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCarreraTable extends Migration
      */
     public function up()
     {
-        Schema::create('carrera', function (Blueprint $table) {
+        Schema::create('rol', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre', 150)->unique();
+            $table->string('nombre')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateCarreraTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carrera');
+        Schema::dropIfExists('rol');
     }
 }

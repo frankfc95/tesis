@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoTelefonoTable extends Migration
+class CreateGradoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateTipoTelefonoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_telefono', function (Blueprint $table) {
+        Schema::create('grado', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre')->unique();
+            $table->string('nombre', 10);
+            $table->string('nombre_completo', 150)->unique();
+
+            $table->unsignedBigInteger('carrera_id');
+            $table->foreign('carrera_id')->references('id')->on('carrera');
+
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ class CreateTipoTelefonoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_telefono');
+        Schema::dropIfExists('grado');
     }
 }

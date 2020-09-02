@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBimestreTable extends Migration
+class CreateDepartamentoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateBimestreTable extends Migration
      */
     public function up()
     {
-        Schema::create('bimestre', function (Blueprint $table) {
+        Schema::create('departamento', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre', 20)->unique();
+            $table->string('nombre')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateBimestreTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bimestre');
+        Schema::dropIfExists('departamento');
     }
 }

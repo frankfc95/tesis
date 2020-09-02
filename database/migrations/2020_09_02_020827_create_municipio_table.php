@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeccionTable extends Migration
+class CreateMunicipioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateSeccionTable extends Migration
      */
     public function up()
     {
-        Schema::create('seccion', function (Blueprint $table) {
+        Schema::create('municipio', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->char('nombre', 1)->unique();
+            $table->string('nombre');
+
+            $table->unsignedBigInteger('departamento_id');
+            $table->foreign('departamento_id')->references('id')->on('departamento');
+
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateSeccionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seccion');
+        Schema::dropIfExists('municipio');
     }
 }

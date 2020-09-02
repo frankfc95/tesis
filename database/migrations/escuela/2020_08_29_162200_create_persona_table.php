@@ -15,13 +15,16 @@ class CreatePersonaTable extends Migration
     {
         Schema::create('persona', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('primer_nombre');
-            $table->string('segundo_nombre')->nullable();
-            $table->string('primer_apellido');
-            $table->string('segundo_apellid')->nullable();
-            $table->string('apellido_casada')->nullable();
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('email')->unique();
             $table->date('fecha_nacimiento');
-            $table->string('sexo')->default('Masculino');
+            $table->string('domicilio')->default('ninguna');
+            $table->string('telelfono')->default('ninguno');
+            
+            $table->unsignedBigInteger('municipio_id');
+            $table->foreign('municipio_id')->references('id')->on('municipio');
+
             $table->timestamps();
         });
     }

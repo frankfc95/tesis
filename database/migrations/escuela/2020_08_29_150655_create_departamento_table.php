@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePersonaEmailTable extends Migration
+class CreateDepartamentoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreatePersonaEmailTable extends Migration
      */
     public function up()
     {
-        Schema::create('persona_email', function (Blueprint $table) {
+        Schema::create('departamento', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre', 75)->unique();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreatePersonaEmailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('persona_email');
+        Schema::dropIfExists('departamento');
     }
 }

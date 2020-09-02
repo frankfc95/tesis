@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMedicamentoTable extends Migration
+class CreateRolTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateMedicamentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('medicamento', function (Blueprint $table) {
+        Schema::create('rol', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre')->unique();
+            $table->string('nombre', 15)->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateMedicamentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medicamento');
+        Schema::dropIfExists('rol');
     }
 }
